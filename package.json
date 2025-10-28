@@ -1,0 +1,28 @@
+{
+	"name": "studio-cms-onboarding-bug",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"astro": "astro",
+		"studiocms": "studiocms",
+		"db:push": "astro db push --remote",
+		"dev": "astro dev --remote",
+		"build": "astro build --remote",
+		"preview": "astro preview --remote"
+	},
+	"devDependencies": {
+		"@types/node": "^22.13.5",
+		"typescript": "^5.9.2"
+	},
+	"dependencies": {
+		"@astrojs/db": "^0.18.0",
+		"@astrojs/node": "^9.4.4",
+		"@studiocms/devapps": "^0.1.0-beta.27",
+		"@studiocms/github": "^0.1.0-beta.27",
+		"@studiocms/md": "^0.1.0-beta.27",
+		"@studiocms/html": "^0.1.0-beta.27",
+		"astro": "^5.14.1",
+		"sharp": "^0.34.3",
+		"studiocms": "^0.1.0-beta.27"
+	}
+}
