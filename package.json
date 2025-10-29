@@ -11,18 +11,18 @@
 		"preview": "astro preview --remote"
 	},
 	"devDependencies": {
-		"@types/node": "^22.13.5",
-		"typescript": "^5.9.2"
+		"@types/node": "^24.9.2",
+		"typescript": "^5.9.3"
 	},
 	"dependencies": {
-		"@astrojs/db": "^0.18.0",
-		"@astrojs/node": "^9.4.4",
+		"@astrojs/db": "^0.18.2",
+		"@astrojs/node": "^9.5.0",
 		"@studiocms/devapps": "^0.1.0-beta.27",
 		"@studiocms/github": "^0.1.0-beta.27",
 		"@studiocms/md": "^0.1.0-beta.27",
 		"@studiocms/html": "^0.1.0-beta.27",
-		"astro": "^5.14.1",
-		"sharp": "^0.34.3",
+		"astro": "^5.15.2",
+		"sharp": "^0.34.4",
 		"studiocms": "^0.1.0-beta.27"
 	}
 }

@@ -1,39 +1,59 @@
-# StudioCMS - Headless Template
+## PicoColors Module Import Bug
+
+This report details a `SyntaxError` related to the `picocolors` module when running an Astro project with its latest dependencies.
+
+-----
+
+### Steps to Reproduce
+
+Run the following commands in order:
 
 ```bash
-npm create studiocms@latest -- --template studiocms/headless
+npm i
+npm run db:push
+npm run dev
 ```
 
-Welcome to your new StudioCMS project! Here's a quick checklist to get you started:
+-----
 
-- [x] Run the install command with your favorite package manager
-- [ ] Make sure your [`.env` variables](https://docs.studiocms.dev/start-here/environment-variables/) are set
-- [ ] Push your DB schema by running `npm run db:push`
-- [ ] Start dev server (`npm run dev`) and go through the first time setup
-- [ ] Open `src/pages/index.astro` for a basic example of how to fetch data from StudioCMS and [read the docs](https://docs.studiocms.dev) to find out more!
+### Observed Error
 
-Once you're done, you can tweak your configuration for StudioCMS in the `studiocms.config.mjs` file.
+After starting the development server, the browser console displays the following error:
 
-## 📂 Project Structure
+> Uncaught SyntaxError: The requested module '/node\_modules/picocolors/picocolors.browser.js?v=482672c8' does not provide an export named 'default' (at endpoint.js?v=482672c8:1:8)
 
-Inside your new project, you'll find the following folders and files. Here's what you need to know:
+-----
 
-- Since StudioCMS is an Astro Integration, this is a normal Astro project.
-- All configuration for StudioCMS is done in the `studiocms.config.mjs` file.
-- The `index.astro` page provides a minimal example of how to use our SDK to fetch data.
+### Additional Context
 
-```
-public/
-└── favicon.svg
-src/
-├── layouts/
-│   └── Layout.astro
-└── pages/
-    └── index.astro
-.env.demo
-README.md
-astro.config.mjs
-package.json
-studiocms.config.mjs
-tsconfig.json
-```
+  * This bug reproduction uses the **latest versions** of all dependencies at the time of reporting.
+  * The issue is **not caused by StudioCMS**.
+
+-----
+
+### Workaround
+
+Downgrading to specific package versions resolves the error. Follow these steps for a clean downgrade:
+
+1.  **Edit `package.json`**
+    Update the following dependencies to these exact versions. It is important to remove the `^` prefix to lock the versions.
+
+    ```json
+    {
+      "dependencies": {
+        "@astrojs/db": "0.18.1",
+        "@astrojs/node": "9.4.0",
+        "astro": "5.14.1"
+      }
+    }
+    ```
+
+2.  **Clear Old Packages**
+    Delete your `node_modules` folder and your `package-lock.json` file. This step is crucial to ensure npm fetches the correct downgraded packages and builds a new, valid dependency tree.
+
+3.  **Re-install Dependencies**
+    Run a clean installation:
+
+    ```bash
+    npm i
+    ```
